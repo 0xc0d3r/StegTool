@@ -2,6 +2,9 @@ package stegtool.cmd;
 
 import stegtool.algo.LSBAlgo;
 
+import jline.TerminalFactory;
+import jline.console.ConsoleReader;
+import jline.console.completer.FileNameCompleter;
 
 import java.io.IOException;
 
@@ -14,6 +17,16 @@ import javax.swing.text.Element;
 public class UnEditableCMD extends DocumentFilter {
 
     private static final String PROMPT = "[cli@stegtool] $ ";
+    public UnEditableCMD() {
+        try {
+            ConsoleReader con = new ConsoleReader();
+            con.addCompleter(new FileNameCompleter());
+            con.setPrompt(PROMPT);
+        }
+        catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
     @Override 
     public void insertString(DocumentFilter.FilterBypass fb, int offset, String string,AttributeSet attr) 
     throws BadLocationException {

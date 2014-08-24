@@ -109,7 +109,7 @@ public class ExtractInterface extends JPanel{
             public void actionPerformed(ActionEvent ae) {
                 String sfile = FileField.getText();
                 String mfile = OutField.getText();
-                String pwd = new String(PassField.getPassword());
+                String pwd = PassField.getText().toString();
                 File sf = new File(sfile);
                 File mf = new File(mfile);
                 if(sfile.equals("")) {

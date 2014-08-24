@@ -35,7 +35,7 @@ import java.io.File;
 public class EmbedInterface extends JPanel{
 	private JPanel innerPanel,InpPanel,MsgPanel,OutPanel,PassPanel,lowerPanel;
 	private JFileChooser InimgChooser;
-	private JComboBox<String> jcb;
+	private JComboBox jcb;
 	private JFileChooser MsgFileChooser;
 	private JFileChooser OutFolChooser;
 	private JButton InputFileButton;
@@ -48,8 +48,6 @@ public class EmbedInterface extends JPanel{
 	private JPasswordField PassField;
 	private JPasswordField ConfPassField;
 	private JLabel HeaderLabel;
-	
-	public static String OutDir = "";
 	public EmbedInterface(){
 		InimgChooser=new JFileChooser();
         HeaderLabel=new JLabel("******StegTool-EMBED******",JLabel.CENTER);
@@ -105,7 +103,7 @@ public class EmbedInterface extends JPanel{
 		OutField=new JTextField(43);
 		OutFileButton=new JButton("Browse");
 		OutPanel=new JPanel(new FlowLayout());
-		jcb = new JComboBox<String>();
+		jcb = new JComboBox();
         jcb.addItem(".png");
         jcb.addItem(".bmp");
         jcb.addItem(".jpg");
@@ -113,14 +111,14 @@ public class EmbedInterface extends JPanel{
         jcb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String opfol = OutDir+"/";
+                String opfol = OutField.getText();
                 String fType = jcb.getSelectedItem().toString();
                 String opfname = "";
                 if(opfol.endsWith(".png") || opfol.endsWith(".bmp") || opfol.endsWith(".jpg")) {
                     opfname = opfol;
                 }
                 else {
-                    opfname = opfol+"StegoFile"+fType;
+                    opfname = opfol+"/"+"StegoFile"+fType;
                 }
                 OutField.setText(opfname);
             }
@@ -137,10 +135,10 @@ public class EmbedInterface extends JPanel{
          public void actionPerformed(ActionEvent e) {
             int returnVal = OutFolChooser.showOpenDialog(innerPanel);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-				File file = OutFolChooser.getSelectedFile();
-				OutDir = file.getPath();
-		        OutField.setText(""+ OutFolChooser.getSelectedFile());
-	           	if( OutField.getText() != null) jcb.setEnabled(true);
+				java.io.File file = OutFolChooser.getSelectedFile();
+		        OutField.setText("" 
+		           + OutFolChooser.getSelectedFile());
+	           if( OutField.getText() != null) jcb.setEnabled(true);
             }
          }
       	});
@@ -167,15 +165,12 @@ public class EmbedInterface extends JPanel{
                 String cfile = FileField.getText();
                 String mfile = MsgField.getText();
                 String sfile = OutField.getText();
-                String pwd = new String(PassField.getPassword());
-                String cpwd = new String(ConfPassField.getPassword());
+                String pwd = PassField.getText();
+                String cpwd = ConfPassField.getText();
                 File cf = new File(cfile);
                 File mf = new File(mfile);
                 File sf = new File(sfile);
-                if(cfile.endsWith(".jpg") && sfile.endsWith(".jpg")) {
-					JOptionPane.showMessageDialog(null,"This version can't process both .jpg files as input","Error",JOptionPane.ERROR_MESSAGE);
-				}
-                else if(cfile.equals("")) {
+                if(cfile.equals("")) {
                     JOptionPane.showMessageDialog(null,"Please choose cover file","Error",JOptionPane.ERROR_MESSAGE);
                 }
                 else if(!cf.exists()) {
