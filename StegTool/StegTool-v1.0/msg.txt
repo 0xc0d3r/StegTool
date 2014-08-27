@@ -1,0 +1,18 @@
+                        ****************************************************
+                                        STEGANOGRAPHY
+                        ****************************************************
+                        
+        Steganography means concealing the data. In ancient days, kings or emperors used to transfer the data
+from one to another place by printing message on their head. Later, the hair will grow so the message is transfered
+securely. Day by day, the TECHNOLOGY is improved and COMPUTER was invented. After that there is a drastic change in
+people. They've developed so many algorithms to transfer the data from one person to other. 
+        
+        LSB(Least Significant Bit) algorithm is the one of the kind to embed data in images. In my project, I've
+used this algorithm. Before inserting data, I encrypted the raw data and then I go for embedding.
+
+                                Team-Members:
+                                    
+                                    1)Anesh     - N090977
+                                    2)Jyothiram - N090990
+                                    3)Anil      - N090537
+                                    
