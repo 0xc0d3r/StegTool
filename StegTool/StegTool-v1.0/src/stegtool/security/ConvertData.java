@@ -1,4 +1,4 @@
-package stegtool.security;
+//package stegtool.security;
 //import org.apache.commons.codec.binary.Base64;
 
 public class ConvertData {
