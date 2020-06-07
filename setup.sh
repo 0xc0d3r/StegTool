@@ -6,7 +6,7 @@ javac -d . src/stegtool/algo/*.java
 javac -d . src/stegtool/cmd/*.java
 javac -d . src/stegtool/gui/*.java
 echo "[+] Generating manifest file and adding contents...";
-echo "Manifest-Version: 1.0\nSpecification-Title: \"StegTool\"\nCreated-By: 2.0 (0xC0d3r,J0rd3n,Anil)\nMain-Class: stegtool.gui.MainFrame" > MyManifest.txt
+echo "Manifest-Version: 1.0\nSpecification-Title: \"StegTool\"\nCreated-By: 0xc0d3r\nMain-Class: stegtool.gui.MainFrame" > MyManifest.txt
 echo "[+] Creating archive(.jar) file...";
 jar cfm St3gT00l-v1.0.jar MyManifest.txt stegtool/
 rm -r stegtool
